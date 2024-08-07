@@ -28,6 +28,7 @@ loadMusic(list_index);
 const musicPlay=()=>{
     playBtn.innerHTML="pause";
     musicAudio.play();
+    listClassActive(); // 테스트 개선 사항
 }
 const musicPause=()=>{
     playBtn.innerHTML="play_arrow";
@@ -55,6 +56,7 @@ playBtn.addEventListener('click',()=>{
     }else{
         musicPause();
     }
+    /* listClassActive(); // 테스트 개선 사항 */
 });
 prevBtn.addEventListener('click',()=>{
     prevMusic();
@@ -109,6 +111,7 @@ const fragment=document.createDocumentFragment();
 const ul=playList.querySelector('ul');
 for(let i=0; i<musicList.length; i++){
     let li=document.createElement('li');
+    li.setAttribute('data-index',i);
     li.innerHTML=`<strong>${musicList[i].name}</strong><em>${musicList[i].artist}</em>`;
     fragment.appendChild(li);
 }
@@ -116,7 +119,25 @@ ul.appendChild(fragment);
 listBtn.addEventListener('click',()=>{
     playList.classList.toggle('active');
 });
-/* ----------------------------------------------- */
+/* -------- 테스트 개선 사항 ----------- */
+const musicListName=playList.querySelectorAll('li');
+const listClassActive=()=>{
+    musicListName.forEach((list)=>{
+        if(list_index==list.dataset.index){ //getAttribute('data-index');
+            list.classList.add('active');
+        }else{
+            list.classList.remove('active');
+        }
+    });
+}
+musicListName.forEach((list)=>{
+    list.addEventListener('click',(e)=>{
+        list_index=e.currentTarget.dataset.index;
+        loadMusic(list_index);
+        musicPlay();
+        listClassActive();
+    });
+});
 const sound=musicApp.querySelector('.sound');
 const muteBtn=musicApp.querySelector('#mute');
 const musicRange=musicApp.querySelector('#range');
@@ -158,3 +179,10 @@ muteBtn.addEventListener('click',()=>{
         muteOn=false;
     }
 });
+// volume 0일 때 volume off 50 이상일 때 volume up 50 미만일 때 volume down 
+/*
+    volumeBar.addEventListener('change',()=>{
+        musicAudio.volume=volumeBar.value/100;
+        let currentVol=musicAudio.volume;
+    });
+*/

@@ -8,7 +8,7 @@ body,div,h2,ul,li,p{margin: 0; padding: 0; box-sizing: border-box;}
     --color-light:#de4ad8;
     --color-shadow:#9e0098;
     --text-color:#fff;
-    --bar-bg:#ae1100;
+    --bar-bg:#0ff;
     --text-size:30px;
     --button-color:#e6e6e6;
     --button-text-color:#151515;
@@ -98,6 +98,9 @@ body{
 }
 .play_list>ul>li>strong{font-weight: normal;}
 .play_list>ul>li>em{font-style:normal; font-size: 12px;}
+.play_list li.active{
+    color: #0ff;
+}
 .controls>#volumeBtn{
     position: absolute; right: -5px; bottom: 107px;
     box-shadow:0px 0px 0px 0px;
@@ -109,11 +112,35 @@ body{
     flex-direction:column-reverse;
     border: 1px solid #666; width: 30px; height: 160px;
     align-items:center; justify-content:center;
-    background: #ccc; position: absolute;
+    background: #f8f; position: absolute;
     right:20px; bottom: 170px; display: none;
 }
 .etc>.sound>#range{
     writing-mode: vertical-lr;
     direction: rtl;
     vertical-align: middle;
+    /* -webkit-appearance:none; */
+    overflow: hidden;
 }
+/* .etc>.sound>#range:focus{
+    outline:none;
+}
+.etc>.sound>#range::-webkit-slider-runnable-track{
+    -webkit-appearance:none;
+    width: 50%; height: 90%; border-radius: 30px;
+}
+.etc>.sound>#range::-webkit-slider-thumb{
+    -webkit-appearance:none;
+    width: 30px; height: 30px; border-radius: 15px; background: #fc0;
+}
+    
+    input[type=range] 같이 기본적으로 스타일 못 바꾸는 애들 스타일 바꾸기
+    -webkit-appearance:none;(옛날 인터넷 용)
+    appearance:none;
+    * ::-webkit-slider-runnable-track(막대기)
+    ::-webkit-slider-thumb(동그라미?)
+    ============================================================
+    input[type=range] 세로로 바꾸기
+    transform-origin:center right; transform:rotate(270deg);
+    position:absolute; right:1px; width:121px; top:0px;
+    */
