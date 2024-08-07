@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player</title>
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+</head>
+<body>
+    <div class="player">
+        <div class="top">
+            <h2>NEUMORPHISM MUSIC PLAYER</h2>
+        </div>
+        <div class="album">
+            <img src="images/album1.jpg" alt="Alone - Color Out" draggable="false">
+        </div>
+        <!-- <div class="volume">
+            <span class="volume_bar"></div>
+        </div> << 시험용 알아서 공부하기(배치는 자유) --> 
+        <div class="info">
+            <p class="name">Alone</p>
+            <p class="artist">Color Out</p>
+        </div>
+        <div class="etc">
+            <div class="play_list">
+                <ul></ul>
+            </div>
+            <div class="sound">
+                <span id="mute" class="material-icons">volume_up</span><input type="range" id="range" name="range">
+            </div>
+        </div>
+        <div class="progress">
+            <div class="bar"><audio src="" id="main_audio"></audio></div>
+            <div class="timebox">
+                <span class="currentTime">0:00</span><span class="totalTime">0:00</span>
+            </div>
+        </div>
+        <div class="controls"> <!-- material icons -->
+            <span id="repeatBtn" class="material-icons" title="전체 반복">repeat</span>
+            <span id="prevBtn" class="material-icons">skip_previous</span>
+            <span id="musicBtn" class="material-icons">play_arrow</span> <!-- pause -->
+            <span id="nextBtn" class="material-icons">skip_next</span>
+            <span id="listBtn" class="material-icons">queue_music</span>
+            <span id="volumeBtn" class="material-icons">volume_up</span>
+        </div>
+    </div>
+    <script src="js/music_list.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

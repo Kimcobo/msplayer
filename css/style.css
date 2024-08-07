@@ -1,0 +1,119 @@
+@charset "utf-8";
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Material+Icons");
+body,div,h2,ul,li,p{margin: 0; padding: 0; box-sizing: border-box;}
+:root{
+    --color-blue:#1f52c4;
+    --play-bg:#e813e0;
+    --color-light:#de4ad8;
+    --color-shadow:#9e0098;
+    --text-color:#fff;
+    --bar-bg:#ae1100;
+    --text-size:30px;
+    --button-color:#e6e6e6;
+    --button-text-color:#151515;
+    --button-light:#fff;
+    --button-shadow:#dedede;
+    /* 시험 볼 땐 색깔 마음대로 */
+}
+body{
+    height:100vh;
+    background: rgb(234,245,47);
+    background: linear-gradient(180deg, rgba(234,245,47,1) 0%, rgba(155,236,10,1) 25%, rgba(31,208,36,1) 50%, rgba(17,228,158,1) 75%, rgba(19,231,232,1) 100%);
+}
+.player{
+    position: fixed; left: 50%; top: 50%; transform:translate(-50%,-50%);
+    width: 400px; padding: 25px 30px; border-radius: 16px;
+    background:var(--play-bg); box-shadow:6px 6px 10px 0px var(--button-text-color),
+    7px 7px 5px 0px var(--color-light) inset,
+    -7px -7px 5px 0px var(--color-shadow) inset;
+    user-select:none; position: relative;
+}
+.top{
+    margin-bottom: 25px;
+}
+.top>h2{
+    font-size:var(--text-size); font-weight: 500; color:var(--text-color);
+    text-align: center; text-shadow:1px 1px 1px var(--color-light),
+    -1px 1px 1px #151515;
+}
+.album{
+    height: 300px; border-radius: 12%;
+    overflow: hidden; 
+}
+.album>img{
+    width: 100%; height: 100%; object-fit:cover; object-position:center center;
+}
+.info{
+    text-align: center; font-size:calc(var(--text-size) * 0.8);
+    margin:calc(var(--text-size) * 0.5); color:var(--text-color);
+}
+.info>.singer{
+    font-size:calc(var(--text-size) * 0.6);
+}
+.progress{
+    height: 8px; border-radius: 8px; background:var(--play-bg);
+    box-shadow: 2px 2px 2px 0px var(--color-shadow) inset,
+    -2px -2px 2px 0px var(--color-light) inset;
+}
+.progress>.bar{
+    width:0px; height: 8px; border-radius: 8px; background:var(--bar-bg);
+    box-shadow: 2px 2px 3px 0px var(--color-shadow); overflow: hidden;
+}
+.progress>.timebox{
+    margin-top: 8px; display: flex; justify-content:space-between;
+    font-size:calc(var(--text-size) * 0.5);
+}
+.progress>.timebox>span{
+    text-shadow:1px 1px 0px var(--color-light);
+}
+.controls{
+    margin-top: 40px; display: flex; justify-content:space-between;
+    align-items:center; position: relative;
+}
+.controls>span{
+    font-size:var(--text-size); width: 40px; height: 40px;
+    border-radius: 50%; background:var(--button-color);
+    display: flex; justify-content: center; align-items: center;
+    color:var(--button-text-color);
+    text-shadow:1px 1px 0px var(--button-light);
+}
+.controls>span:hover, .controls>span:active{
+    color:var(--color-blue);
+}
+.play_list{
+    position: absolute; left: 30px; top: 110px; width:340px;
+    min-height: 370px; padding: 20px; box-sizing: border-box;
+    background: #090909; color:var(--button-color); display:none;
+    z-index: 10000;
+}
+.play_list.active{display: block;}
+.play_list>ul{
+    list-style:none;
+}
+.play_list>ul>li{
+    border-bottom: 1px solid var(--button-light); font-size: 16px;
+    letter-spacing: -1px; /* line-height:1.8; */ padding: 5px 0;
+    display: flex; justify-content:space-between; align-items:flex-end;
+}
+.play_list>ul>li>strong{font-weight: normal;}
+.play_list>ul>li>em{font-style:normal; font-size: 12px;}
+.controls>#volumeBtn{
+    position: absolute; right: -5px; bottom: 107px;
+    box-shadow:0px 0px 0px 0px;
+    text-shadow:0px 0px 0px;
+    color: #333; width: 20px; height: 20px;
+    background:var(--play-bg);
+}
+.etc>.sound{
+    flex-direction:column-reverse;
+    border: 1px solid #666; width: 30px; height: 160px;
+    align-items:center; justify-content:center;
+    background: #ccc; position: absolute;
+    right:20px; bottom: 170px; display: none;
+}
+.etc>.sound>#range{
+    writing-mode: vertical-lr;
+    direction: rtl;
+    vertical-align: middle;
+}
