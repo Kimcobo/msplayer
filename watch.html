@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music player Watch Version</title>
+    <link rel="stylesheet" href="css/watch.css" type="text/css">
+</head>
+<body>
+    <div class="player">
+        <div class="backgroundImage">
+            <img src="images/album1.jpg" alt="album cover">
+        </div>
+        <div class="main">
+            <h1 class="name">Alone</h1>
+            <p class="artist">Color Out</p>
+            <span id="musicBtn" class="material-icons">play_arrow</span> <!-- pause -->
+            <span id="prevBtn" class="material-icons">skip_previous</span>
+            <span id="nextBtn" class="material-icons">skip_next</span>
+            <span id="listBtn" class="material-icons">queue_music</span>
+            <span id="volumeBtn" class="material-icons">volume_up</span>
+            <div class="progress">
+                <svg class="circle_progress" width="192" height="192" viewBox="0 0 120 120">
+                    <circle class="frame" cx="60" cy="60" r="56" stroke-width="5" />
+                    <circle class="bar" cx="60" cy="60" r="60" stroke-width="5" />
+                </svg>
+                <audio src="" id="main_audio"></audio>
+                <div class="timebox">
+                    <span class="currentTime">0:00</span>
+                </div>
+            </div>
+        </div>
+        <div class="volumeSelect">
+            
+        </div>
+        <div class="menuScreen">
+            
+        </div>
+    </div>
+    <div class="border"></div>
+    <script src="js/music_list.js"></script>
+    <script src="js/watch.js"></script>
+</body>
+</html>

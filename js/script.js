@@ -186,3 +186,25 @@ muteBtn.addEventListener('click',()=>{
         let currentVol=musicAudio.volume;
     });
 */
+const shuffleBtn=musicApp.querySelector('#shuffleBtn');
+const savedList=musicList;
+let isShuffling=false;
+shuffleBtn.addEventListener('click',()=>{
+    if(!isShuffling){
+        isShuffling=true;
+        shuffleBtn.innerHTML="shuffle_on";
+        console.log('on');
+        // 음악 리스트 현재 듣고 있는 곡은 무조건 고정
+        // 나머지 곡들은 랜덤 순서로 섞어서 진행
+        // 단 1 사이클에 1번만 나와야 하고 모든 곡이 나와야 함
+        // 전체 듣기가 켜져있을 때 모든 곡이 끝나면 처음 셔플된 곡들
+        // 그대로 나옴
+    }else{
+        isShuffling=false;
+        shuffleBtn.innerHTML="shuffle";
+        console.log('off');
+        // 음악 리스트가 지금 상태로 되돌아감
+        musicList=savedList;
+        console.log(musicList);
+    }
+});
