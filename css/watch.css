@@ -82,7 +82,53 @@ body{
     color:var(--bgc); font-size: 10px; z-index: 5050;
 }
 .player>.volumeSelect{
-    display: none;
+    display: none; position: absolute; left: 0; top: 0;
+    z-index:20000; width: 100%; height: 100%;
+    background: #090909; color: #fff;
+    cursor: pointer;
+}
+.player>.volumeSelect>#mute{
+    font-size: 32px; position: absolute;
+    left: 50%; transform:translateX(-50%); top: 12%;
+    z-index: 27000;
+}
+.player>.volumeSelect>.volumeFunc{
+    display: flex; position: absolute; left:50%; top: 50%;
+    transform:translate(-50%,-50%);
+    justify-content:space-between; align-items: center;
+    text-align: center; z-index: 29999;
+    width: 92px; height: 54px;
+}
+.player>.volumeSelect>.volumeFunc>.minus{
+    font-size: 32px; width: 23px;
+}
+.player>.volumeSelect>.volumeFunc>.currentVolume{
+    font-size: 40px; position: absolute;
+    left: 50%; top: 50%;
+    transform:translate(-50%,-50%);
+}
+.player>.volumeSelect>.volumeFunc>.plus{
+    font-size: 32px; width: 23px;
+}
+.player>.volumeSelect>.sound{
+    font-size: 24px; position: absolute; left: 50%;
+    transform:translateX(-50%); bottom: 12%;
+}
+.player>.volumeSelect>.volumeAdjust{
+    width: 100%; position: absolute; left: 0; top: 0;
+    height:100%; border-radius:50%; background-color:transparent;
+    z-index: 25000;
+}
+.player>.volumeSelect>.volumeAdjust>.volume_progress{
+    transform:rotate(-90deg);
+}
+.player>.volumeSelect>.volumeAdjust>.volume_progress>.volume_frame,
+.player>.volumeSelect>.volumeAdjust>.volume_progress>.volume_bar{
+    fill:none;
+}
+.player>.volumeSelect>.volumeAdjust>.volume_progress>.volume_bar{
+    stroke:#fc0;
+    stroke-linecap: round;
 }
 .player>.menuScreen{
     display: none;
@@ -96,4 +142,11 @@ body{
     position: absolute; left: 200px; top: 200px;
     text-decoration: none; color: #fff; font-weight: bold;
     font-size: 60px;
+}
+.backToMain{
+    color: #fff; position: absolute; top: 50%; transform: translateY(-50%);
+    left:5%; font-size: 32px; text-decoration: none; z-index: 28000;
+}
+.player>.active{
+    display: block;
 }

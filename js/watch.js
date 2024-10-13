@@ -14,6 +14,12 @@ const nextBtn=musicApp.querySelector('#nextBtn');
 const repeatBtn=musicApp.querySelector('#repeatBtn');
 const listBtn=musicApp.querySelector('#listBtn');
 const volumeBtn=musicApp.querySelector('#volumeBtn');
+const volumeSelect=musicApp.querySelector('.volumeSelect');
+const volumeMinus=musicApp.querySelector('.minus');
+const volumePlus=musicApp.querySelector('.plus');
+const volumeBar=musicApp.querySelector('.volume_bar');
+const currentVolume=musicApp.querySelector('.currentVolume');
+const muteBtn=musicApp.querySelector('#mute');
 //--------------------------------------------------
 const loadMusic=(num)=>{
     musicAudio.src=`songs/${musicList[num].audio}.mp3`;
@@ -87,12 +93,79 @@ musicAudio.addEventListener('timeupdate',(e)=>{
     }
     playTime.innerHTML=`${currentMin}:${currentSec}`;
 });
-/* progressive.addEventListener('click',(e)=>{
-    let clickPos=e.offsetX;
-    let maxWidth=progressive.clientWidth; console.log(maxWidth);
-    musicAudio.currentTime=(clickPos/maxWidth)*musicAudio.duration;
-    if(playBtn.innerHTML=="play_arrow"){
-        musicPlay();
-    }
-}); */
 /* --------------------------------------------------------- */
+volumeBtn.addEventListener('click',()=>{
+    volumeSelect.classList.add('active');
+});
+let muteOn=false;
+let currentVol=7;
+const maxVol=15;
+currentVolume.innerHTML=currentVol;
+let volumeProgressRatio=(currentVol/maxVol)*100;
+musicAudio.volume=volumeProgressRatio/100;
+function volumeProgress(per) {
+    const progress = per / 100;
+    const dashoffset = CIRCUMFERENCE * (1 - progress);
+    volumeBar.style.strokeDashoffset = dashoffset;
+}
+volumeBar.style.strokeDasharray = CIRCUMFERENCE;
+volumeProgress(volumeProgressRatio);
+// console.log(volumeProgressRatio);
+// console.log(musicAudio.volume);
+volumeMinus.addEventListener('click',()=>{
+    if(currentVol>0){
+        currentVol--;
+        currentVolume.innerHTML=currentVol;
+        volumeProgressRatio=(currentVol/maxVol)*100;
+        musicAudio.volume=volumeProgressRatio/100;
+        volumeProgress(volumeProgressRatio);
+        volumeBtn.innerHTML="volume_up";
+        muteBtn.innerHTML="volume_up";
+    }else{
+        currentVol=0;
+        musicAudio.volume=0;
+    }
+    if(musicAudio.volume==0){
+        volumeBtn.innerHTML="volume_off";
+        muteBtn.innerHTML="volume_off";
+        volumeMinus.style.color='#666';
+    }
+    volumePlus.style.color='#fff';
+    console.log('minus');
+});
+volumePlus.addEventListener('click',()=>{
+    if(currentVol<maxVol){
+        currentVol++;
+        currentVolume.innerHTML=currentVol;
+        volumeProgressRatio=(currentVol/maxVol)*100;
+        musicAudio.volume=volumeProgressRatio/100;
+        volumeProgress(volumeProgressRatio);
+        volumeBtn.innerHTML="volume_up";
+        muteBtn.innerHTML="volume_up";
+    }else{
+        currentVol=maxVol;
+        musicAudio.volume=1;
+    }
+    if(musicAudio.volume==1){
+        volumePlus.style.color='#666';
+    }
+    volumeMinus.style.color='#fff';
+    console.log('plus');
+});
+muteBtn.addEventListener('click',()=>{
+    if(muteOn==false){
+        musicAudio.volume=0;
+        volumeBtn.innerHTML="volume_off";
+        muteBtn.innerHTML="volume_off";
+        muteOn=true;
+    }else{
+        musicAudio.volume=volumeProgressRatio/100;
+        volumeBtn.innerHTML="volume_up";
+        muteBtn.innerHTML="volume_up";
+        muteOn=false;
+    }
+});
+const backToMain=musicApp.querySelector('.backToMain');
+backToMain.addEventListener('click',()=>{
+    volumeSelect.classList.remove('active');
+});
