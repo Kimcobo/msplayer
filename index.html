@@ -7,45 +7,54 @@
     <link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
 <body>
-    <div class="player">
-        <div class="top">
-            <h2>NEUMORPHISM MUSIC PLAYER</h2>
-        </div>
+    <section id="main">
         <div class="album">
             <img src="images/album1.jpg" alt="Alone - Color Out" draggable="false">
+            <div class="circle"></div>
         </div>
-        <!-- <div class="volume">
-            <span class="volume_bar"></div>
-        </div> << 시험용 알아서 공부하기(배치는 자유) --> 
-        <div class="info">
-            <p class="name">Alone</p>
-            <p class="artist">Color Out</p>
-        </div>
-        <div class="etc">
-            <div class="play_list">
-                <ul></ul>
+        <div class="player">
+            <!-- <div class="volume">
+                <span class="volume_bar"></div>
+            </div> << 시험용 알아서 공부하기(배치는 자유) --> 
+            <div class="progress">
+                <audio src="" id="main_audio"></audio>
+                <div class="timebox">
+                    <span class="currentTime">0:00</span>
+                    <div class="center">
+                        <div class="bar"></div>
+                    </div>
+                    <span class="totalTime">0:00</span>
+                </div>
             </div>
-            <div class="sound">
-                <span id="mute" class="material-icons">volume_up</span><input type="range" id="range" name="range">
+            <div class="func">
+                <div class="info">
+                    <p class="name">Alone</p>
+                    <p class="artist">Color Out</p>
+                </div>
+                <div class="main_controls"> <!-- material icons -->
+                    <span id="shuffleBtn" class="material-icons">shuffle</span>
+                    <span id="prevBtn" class="material-icons">skip_previous</span>
+                    <span id="musicBtn" class="material-icons">play_arrow</span> <!-- pause -->
+                    <span id="nextBtn" class="material-icons">skip_next</span>
+                    <span id="repeatBtn" class="material-icons" title="전체 반복">repeat</span>
+                </div>
+                <div class="sub_controls">
+                    <a href="watch.html" class="watch">Go To Watch Version</a>
+                    <span id="volumeBtn" class="material-icons">volume_up</span>
+                    <span id="listBtn" class="material-icons">queue_music</span>
+                    <div class="sound">
+                        <span id="mute" class="material-icons">volume_up</span>
+                        <input type="range" id="range" name="range"><span class="value"></span></div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="progress">
-            <div class="bar"><audio src="" id="main_audio"></audio></div>
-            <div class="timebox">
-                <span class="currentTime">0:00</span><span class="totalTime">0:00</span>
-            </div>
+        <div class="play_list">
+            <ul></ul>
         </div>
-        <div class="controls"> <!-- material icons -->
-            <span id="repeatBtn" class="material-icons" title="전체 반복">repeat</span>
-            <span id="prevBtn" class="material-icons">skip_previous</span>
-            <span id="musicBtn" class="material-icons">play_arrow</span> <!-- pause -->
-            <span id="nextBtn" class="material-icons">skip_next</span>
-            <span id="listBtn" class="material-icons">queue_music</span>
-            <span id="volumeBtn" class="material-icons">volume_up</span>
-            <span id="shuffleBtn" class="material-icons">shuffle</span>
+        <div class="bg">
         </div>
-    </div>
-    <a href="watch.html" class="watch">Watch Version</a>
+    </section>
     <script src="js/music_list.js"></script>
     <script src="js/script.js"></script>
 </body>

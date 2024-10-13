@@ -3,19 +3,20 @@ const musicAudio=musicApp.querySelector('#main_audio');
 const playBtn=musicApp.querySelector('#musicBtn');
 let list_index=0;
 //--------------------------------------------------
-const albumImg=musicApp.querySelector('.album>img');
+const albumImg=document.querySelector('.album>img');
 const musicName=musicApp.querySelector('.name');
 const musicArtist=musicApp.querySelector('.artist');
-const playList=musicApp.querySelector('.play_list');
+const playList=document.querySelector('.play_list');
 const totalTime=musicApp.querySelector('.totalTime');
 const playTime=musicApp.querySelector('.currentTime');
-const progressive=musicApp.querySelector('.progress');
+const progressive=musicApp.querySelector('.center');
 const progressBar=musicApp.querySelector('.bar');
 const prevBtn=musicApp.querySelector('#prevBtn');
 const nextBtn=musicApp.querySelector('#nextBtn');
 const repeatBtn=musicApp.querySelector('#repeatBtn');
 const listBtn=musicApp.querySelector('#listBtn');
 const volumeBtn=musicApp.querySelector('#volumeBtn');
+const soundValue=musicApp.querySelector('.value');
 //--------------------------------------------------
 const loadMusic=(num)=>{
     musicAudio.src=`songs/${musicList[num].audio}.mp3`;
@@ -143,13 +144,15 @@ const muteBtn=musicApp.querySelector('#mute');
 const musicRange=musicApp.querySelector('#range');
 let soundOpen=false;
 let muteOn=false;
+let currentVal=50;
+soundValue.innerHTML=currentVal;
 volumeBtn.addEventListener('click',()=>{
     if(soundOpen==false){
-        volumeBtn.style.color="var(--color-blue)";
+        volumeBtn.style.color="#09f";
         sound.style.display="flex";
         soundOpen=true;
     }else{
-        volumeBtn.style.color="#333";
+        volumeBtn.style.color="#090909";
         sound.style.display="none";
         soundOpen=false;
     }
@@ -157,8 +160,12 @@ volumeBtn.addEventListener('click',()=>{
 musicRange.addEventListener('change',()=>{
     if(muteOn==false){
         musicAudio.volume=musicRange.value/100;
+        currentVal=musicRange.value;
+        soundValue.innerHTML=currentVal;
     }else{
         musicAudio.volume=0;
+        currentVal=0;
+        soundValue.innerHTML=currentVal;
     }
     if(musicAudio.volume==0){
         volumeBtn.innerHTML="volume_off";
