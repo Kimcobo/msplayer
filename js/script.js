@@ -18,6 +18,21 @@ const listBtn=musicApp.querySelector('#listBtn');
 const volumeBtn=musicApp.querySelector('#volumeBtn');
 const soundValue=musicApp.querySelector('.value');
 //--------------------------------------------------
+const barLength=50;
+const visual=document.querySelector('.visualizer');
+for(i=0; i<barLength; i++){
+    const bar=document.createElement('span');
+    bar.setAttribute("class","bar");
+    visual.appendChild(bar);
+}
+const bars=document.querySelectorAll('.visualizer>span');
+const visualizing=()=>{
+    bars.forEach((bar)=>{
+        bar.style.height=`${Math.floor(Math.random()*100)}%`;
+    });
+    requestAnimationFrame(visualizing);
+    }
+// ===============================================
 const loadMusic=(num)=>{
     musicAudio.src=`songs/${musicList[num].audio}.mp3`;
     albumImg.src=`images/${musicList[num].img}.jpg`;
@@ -27,11 +42,14 @@ const loadMusic=(num)=>{
 }
 loadMusic(list_index);
 const musicPlay=()=>{
+    visualizing();
+    albumImg.style.animationPlayState='running';
     playBtn.innerHTML="pause";
     musicAudio.play();
     listClassActive(); // 테스트 개선 사항
 }
 const musicPause=()=>{
+    albumImg.style.animationPlayState='paused';
     playBtn.innerHTML="play_arrow";
     musicAudio.pause();
 }
@@ -215,3 +233,4 @@ shuffleBtn.addEventListener('click',()=>{
         console.log(musicList);
     }
 });
+// =============================================

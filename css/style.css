@@ -12,6 +12,10 @@ body,div,h2,ul,li,p,input{margin: 0; padding: 0; box-sizing: border-box;}
     --lightGray:#ededed;
     --bgc:#76A2F9;
 }
+@keyframes spin{
+    0%{transform:rotate(0deg);}
+    100%{transform:rotate(360deg);}
+}
 body{
     height:100vh;
     position: relative;
@@ -32,11 +36,12 @@ body{
 .album{
     width: 600px; height: 600px; border-radius: 50%;
     overflow: hidden; 
-    position:absolute; left: 50%; top:12%; transform:translateX(-50%);
+    position:absolute; left: 50%; top:5%; transform:translateX(-50%);
     z-index: 5000;
 }
 .album>img{
     width: 100%; height: 100%; object-fit:cover; object-position:center center;
+    animation:spin 4s infinite linear paused;
 }
 .album>.circle{
     width:20%; height:20%; position: absolute; left: 50%; top: 50%;
@@ -148,4 +153,13 @@ body{
 }
 .watch{
     text-decoration: none; color:var(--black); font-weight: bold; font-size: 12px
+}
+.visualizer{
+    width: 1250px; height: 200px; z-index: 1500;
+    position: absolute; display: flex; left: 50%; transform:translateX(-50%) rotate(180deg);
+    bottom: 20%; gap: 5px; transform-origin:center center;
+}
+.visualizer>.bar{
+    background:var(--white); width: 25px; height: 0px;
+    display: block;
 }
