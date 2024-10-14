@@ -3,18 +3,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Material+Icons");
 body,div,h2,ul,li,p,input{margin: 0; padding: 0; box-sizing: border-box;}
 :root{
-    /* --color-blue:#1f52c4;
-    --play-bg:#e813e0;
-    --color-light:#de4ad8;
-    --color-shadow:#9e0098;
-    --text-color:#fff;
-    --bar-bg:#0ff;
-    --text-size:30px;
-    --button-color:#e6e6e6;
-    --button-text-color:#151515;
-    --button-light:#fff;
-    --button-shadow:#dedede;
-    시험 볼 땐 색깔 마음대로 */
+    --white:#fff;
+    --black:#090909;
+    --pink:#f3f;
+    --lightBlue:#09f;
+    --mint:#0ff;
+    --gray:#ccc;
+    --lightGray:#ededed;
+    --bgc:#76A2F9;
 }
 body{
     height:100vh;
@@ -30,7 +26,7 @@ body{
     user-select:none;
     -webkit-user-select:none;
     padding:20px 40px 10px;
-    background: #fff;
+    background:var(--white);
     z-index: 2000;
 }
 .album{
@@ -44,18 +40,18 @@ body{
 }
 .album>.circle{
     width:20%; height:20%; position: absolute; left: 50%; top: 50%;
-    transform:translate(-50%,-50%); background:#15212e; border-radius: 50%;
-    border: 3px solid #fff; filter:brightness(30%);
+    transform:translate(-50%,-50%); background:var(--bgc); border-radius: 50%;
+    border: 3px solid var(--white); filter:brightness(30%);
 }
 .progress{
     height: 20px; border-radius: 8px; position: relative;
 }
 .progress>.timebox>.center>.bar{
     width:0px; height: 8px; border-radius: 8px;  overflow: hidden;
-    background: #f3f;
+    background:var(--pink);
 }
 .progress>.timebox>.center{
-    width:100%; background: #ccc;
+    width:100%; background:var(--gray);
     max-width:1740px;
 }
 .progress>.timebox{
@@ -68,7 +64,7 @@ body{
     position: relative;
 }
 .info{
-    text-align:left; font-size:24px; color: #090909;
+    text-align:left; font-size:24px; color:var(--black);
     font-weight: bold;
 }
 .info>.artist{
@@ -81,16 +77,16 @@ body{
 }
 .main_controls>span{
     font-size:40px; width: 50px; height: 50px;
-    border-radius: 50%; background: #fff; color: #090909;
+    border-radius: 50%; background:var(--white); color:var(--black);
     display: flex; justify-content: center; align-items: center;
 }
 .main_controls>span:hover, .main_controls>span:active{
-    color:#09f;
+    color:var(--lightBlue);
 }
 .main_controls>#musicBtn{
     font-size: 50px; width: 60px; height: 60px;
     border: 5px solid transparent;
-    background-image: linear-gradient(#fff, #fff),
+    background-image: linear-gradient(var(--white), var(--white)),
     linear-gradient(
     to right,
     #231557 0%,
@@ -113,7 +109,7 @@ body{
 .play_list{
     position: absolute; right:-400px; top: 0px; width:400px;
     min-height:calc(100vh - 150px); padding: 20px; box-sizing: border-box;
-    background: #ededed; color:#090909; display:block;
+    background: #ededed; color:var(--black); display:block;
     z-index: 10000; transition:all .3s;
 }
 .play_list.active{right:0;}
@@ -121,7 +117,7 @@ body{
     list-style:none;
 }
 .play_list>ul>li{
-    border-bottom: 1px solid #fff; font-size: 24px;
+    border-bottom: 1px solid var(--white);; font-size: 24px;
     letter-spacing: -1px; /* line-height:1.8; */ padding: 5px 0;
     display: flex; justify-content:space-between; align-items:flex-end;
     cursor: pointer;
@@ -129,14 +125,14 @@ body{
 .play_list>ul>li>strong{font-weight: normal;}
 .play_list>ul>li>em{font-style:normal; font-size: 18px;}
 .play_list li.active{
-    color: #0ff;
+    color:var(--mint);
 }
 .sound{
     flex-direction:row;
-    border: 1px solid #090909; width: 220px; height: 50px;
+    border: 1px solid var(--black); width: 220px; height: 50px;
     padding:5px 10px; display: flex;
     align-items:center; justify-content:space-between;
-    background: #ededed; position: absolute;
+    background:var(--lightGray); position: absolute;
     left:20px; top:-60px; display: none; z-index: 3000;
 }
 .sound>.value{
@@ -147,9 +143,9 @@ body{
 }
 .bg{
     width: 100%; height: 100vh;
-    background: #15212e;
+    background:var(--bgc);
     filter:brightness(30%);
 }
 .watch{
-    text-decoration: none; color:#090909; font-weight: bold; font-size: 12px
+    text-decoration: none; color:var(--black); font-weight: bold; font-size: 12px
 }
