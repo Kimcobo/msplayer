@@ -226,27 +226,63 @@ backToMain2.addEventListener('click',()=>{
 menuBtn.addEventListener('click',()=>{
     menuScreen.classList.add('on');
 });
+const originalMusicList = [...musicList];
+//const savedList=musicList;
 let isShuffling=false;
+
+const shuffleArray = (array) => {
+    for(let i=array.length-1; i>0; i--){
+        const j = Math.floor(Math.random()*(i+1));
+        [array[i], array[j]] = [array[j], array[i]];
+        /* let temp = array[i]; array[i] = array[j];  array[j] = temp; */
+    }
+}
+
+const updatePlayList = () =>{
+    const ul = playList.querySelector('ul');
+    ul.innerHTML = '';
+    const fragment = document.createDocumentFragment();
+    for(let i=0; i<musicList.length; i++){
+        let li = document.createElement('li');
+        li.setAttribute('data-index', i);
+        li.innerHTML = `<strong>${musicList[i].name}</strong><em>${musicList[i].artist}</em>`;
+        fragment.appendChild(li);
+    }
+    ul.appendChild(fragment);
+    const musicListNew = playList.querySelectorAll('li');
+    musicListNew.forEach((list)=>{
+        list.addEventListener('click',(e)=>{
+            list_index = parseInt(e.currentTarget.dataset.index);
+            loadMusic(list_index);
+            musicPlay();
+            listClassActive();
+        })
+    })    
+}
+
 shuffleFunc.addEventListener('click',()=>{
     if(!isShuffling){
         isShuffling=true;
         shuffleFunc.classList.add('on');
         shuffleBtn.innerHTML="shuffle_on";
         shuffleText.innerHTML="ON";
-        console.log('on');
-        // 음악 리스트 현재 듣고 있는 곡은 무조건 고정
-        // 나머지 곡들은 랜덤 순서로 섞어서 진행
-        // 단 1 사이클에 1번만 나와야 하고 모든 곡이 나와야 함
-        // 전체 듣기가 켜져있을 때 모든 곡이 끝나면 처음 셔플된 곡들
-        // 그대로 나옴
+        shuffleArray(musicList);
+        list_index = musicList.findIndex(item => item.name===originalMusicList[list_index].name);
     }else{
+        isShuffling=false;
         isShuffling=false;
         shuffleFunc.classList.remove('on');
         shuffleBtn.innerHTML="shuffle";
         shuffleText.innerHTML="OFF";
-        console.log('off');
-        // 음악 리스트가 지금 상태로 되돌아감
+        list_index = originalMusicList.findIndex(item => item.name===musicList[list_index].name);
+        musicList=[...originalMusicList];
     }
+    updatePlayList();
+    loadMusic(list_index);
+    if (playBtn.innerHTML === "pause") {
+        musicPlay();
+    }
+    listClassActive();
 });
 repeatFunc.addEventListener('click',()=>{
     let getTextRepeat=repeatBtn.innerHTML;
