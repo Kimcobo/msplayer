@@ -25,13 +25,12 @@ for(i=0; i<barLength; i++){
     bar.setAttribute("class","bar");
     visual.appendChild(bar);
 }
-let vid=0;
+let waving="";
 const bars=document.querySelectorAll('.visualizer>span');
 const visualizing=()=>{
     bars.forEach((bar)=>{
         bar.style.height=`${Math.floor(Math.random()*100)}%`;
     });
-    requestAnimationFrame(visualizing);
     }
 // ===============================================
 const loadMusic=(num)=>{
@@ -43,7 +42,8 @@ const loadMusic=(num)=>{
 }
 loadMusic(list_index);
 const musicPlay=()=>{
-    requestAnimationFrame(visualizing);
+    clearInterval(waving);
+    waving=setInterval(visualizing,50);
     visual.style.display="flex";
     albumImg.style.animationPlayState='running';
     playBtn.innerHTML="pause";
@@ -51,6 +51,7 @@ const musicPlay=()=>{
     listClassActive(); // 테스트 개선 사항
 }
 const musicPause=()=>{
+    clearInterval(waving);
     albumImg.style.animationPlayState='paused';
     playBtn.innerHTML="play_arrow";
     musicAudio.pause();
