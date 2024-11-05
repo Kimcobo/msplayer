@@ -156,8 +156,9 @@ body{
 }
 .visualizer{
     width: 1250px; height: 200px; z-index: 1500;
-    position: absolute; display: flex; left: 50%; transform:translateX(-50%) rotate(180deg);
+    position: absolute; left: 50%; transform:translateX(-50%) rotate(180deg);
     bottom: 20%; gap: 5px; transform-origin:center center;
+    display: none;
 }
 .visualizer>.bar{
     background:var(--white); width: 25px; height: 0px;

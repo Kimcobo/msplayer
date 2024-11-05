@@ -25,6 +25,7 @@ for(i=0; i<barLength; i++){
     bar.setAttribute("class","bar");
     visual.appendChild(bar);
 }
+let vid=0;
 const bars=document.querySelectorAll('.visualizer>span');
 const visualizing=()=>{
     bars.forEach((bar)=>{
@@ -42,7 +43,8 @@ const loadMusic=(num)=>{
 }
 loadMusic(list_index);
 const musicPlay=()=>{
-    visualizing();
+    requestAnimationFrame(visualizing);
+    visual.style.display="flex";
     albumImg.style.animationPlayState='running';
     playBtn.innerHTML="pause";
     musicAudio.play();
@@ -74,6 +76,7 @@ playBtn.addEventListener('click',()=>{
         musicPlay();
     }else{
         musicPause();
+        visual.style.display="none";
     }
     /* listClassActive(); // 테스트 개선 사항 */
 });
